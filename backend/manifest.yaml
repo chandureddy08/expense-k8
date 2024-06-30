@@ -52,6 +52,6 @@ spec:
     project: expense
     tier: app
   ports:
-    - protocol: TCP
-      port: 8080
-      targetPort: 8080
+  - protocol: TCP
+    port: 8080
+    targetPort: 8080
