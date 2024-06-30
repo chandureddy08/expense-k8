@@ -98,17 +98,17 @@ kind: Deployment
 apiVersion: apps/v1
 metadata:
   namespace: expense
-  name: backend
+  name: frontend
   labels:
     # deployment related lables
-    component: backend
+    component: frontend
     project: expense
     tier: web
 spec:
   replicas: 2
   selector:
     matchLabels:
-      component: backend
+      component: frontend
       project: expense
       tier: web
   template:
@@ -120,8 +120,8 @@ spec:
         tier: web
     spec:
       containers:
-      - name: backend
-        image: chandureddy08/backend:v1.0
+      - name: frontend
+        image: chandureddy08/frontend:v1.0
         volumeMounts:
         - name: nginx-conf
           mountPath: /etc/nginx/nginx.conf
@@ -142,12 +142,12 @@ spec:
 kind: Service
 apiVersion: v1 
 metadata:
-  name: backend
+  name: frontend
   namespace: expense
 spec:
   type: LoadBalancer
   selector:
-    component: backend
+    component: frontend
     project: expense
     tier: web
   ports:
