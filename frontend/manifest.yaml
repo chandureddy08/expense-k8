@@ -37,7 +37,7 @@ data:
       # Logging Settings
       ##
       access_log /var/log/nginx/access.log;
-      error_log /var/log/nginx/error.log debug; # change from debug to warn or error for production
+      error_log /var/log/nginx/error.log warn; # change from debug to warn or error for production
 
       ##
       # Gzip Settings
@@ -88,7 +88,7 @@ data:
             proxy_pass http://backend:8080/;
         }
 
-        }
+      }
 
     }
 
@@ -100,7 +100,7 @@ metadata:
   namespace: expense
   name: frontend
   labels:
-    # deployment related lables
+    # deployment related labels
     component: frontend
     project: expense
     tier: web
@@ -121,15 +121,12 @@ spec:
     spec:
       containers:
       - name: frontend
-        image: joindevops/frontend:v1.0
+        image: chandureddy08/frontend:v1.0
         volumeMounts:
         - name: nginx-conf
           mountPath: /etc/nginx/nginx.conf
           subPath: nginx.conf
           readOnly: true
-        # envFrom:
-        #   - configMapRef:
-        #       name: backend
       volumes:
       - name: nginx-conf
         configMap:
