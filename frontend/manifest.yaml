@@ -115,7 +115,7 @@ spec:
     # pod definition
     metadata:
       labels:
-        component: backend
+        component: frontend
         project: expense
         tier: web
     spec:
