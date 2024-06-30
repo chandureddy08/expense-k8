@@ -131,9 +131,9 @@ spec:
         #   - configMapRef:
         #       name: backend
       volumes:
-        - name: nginx-conf
-          configMap:
-            name: frontend
+      - name: nginx-conf
+        configMap:
+          name: frontend
           items:
           - key: nginx.conf
             path: nginx.conf
